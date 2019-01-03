@@ -21,7 +21,7 @@
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Sheena Shrestha</h3>
+              <h3 class="panel-title"><%=@book.user.name%></h3>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -48,6 +48,10 @@
                         <td>username:</td>
                         <td><%=@book.user.name%></td>
                       </tr>
+                        <tr>
+                        <td>sex:</td>
+                        <td><%=@book.user.sex%></td>
+                      </tr>
                       <tr>
                         <td>country:</td>
                         <td><%= @book.country %></td>
@@ -57,14 +61,11 @@
                         <td>  <%= @book.induction %></td>
                       </tr>
                    
+                    
+              
                       <tr>
-                             
-                        <td>Gender</td>
-                        <td>man</td>
-                      </tr>
-                      <tr>
-                        <td>Home Address</td>
-                        <td>東京都</td>
+                        <td>Address</td>
+                        <td><%=@book.user.adress%></td>
                       </tr>
                       <tr>
                         <td>Email</td>
