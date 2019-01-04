@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+ 
+  get 'user/show'
+  resources :user
   resources :books
   root to: 'world#index'
   devise_for :users
