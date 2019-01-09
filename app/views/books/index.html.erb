@@ -5,7 +5,9 @@
 <h2 class="text-center">一覧</h2>
 
 <%if current_user%>
-<%= link_to 'New Book', new_book_path %>
+<%=link_to 'My Page',mypage_user_path(current_user.id)%></br>
+<%= link_to 'New Book', new_book_path %></br>
+
   <%end%>
 	<div class="row">
 		<div class="col-lg-12 col-md-8 col-sm-9 col-xs-12">

@@ -1,8 +1,13 @@
 class UserController < ApplicationController
   def show
   
-  @book=Book.find(params[:id])
+
  
-  @users=User.where(id: @book.user_id)
+  @user=User.find(params[:id])
+  end
+  
+  def mypage
+  @user=User.find(params[:id])
+  @books=Book.where(user_id: current_user.id)
   end
 end

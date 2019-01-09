@@ -1,11 +1,9 @@
-
-
 <section class="login-block">
   <div class="container">
 
 <p id="notice"><%= notice %></p>
 <div class="login-sec">
-<h2 class="text-center">ユーザー詳細</h2>
+<h2 class="text-center">マイページ</h2>
 
 
 
@@ -18,15 +16,19 @@
       <div class="row">
      
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-12 col-sm-offset-12 col-md-offset-12 col-lg-offset-12 toppad" >
-   
+           
+           
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title"><%=@user.name%></h3>
+              <h3 class="panel-title"><%=@user.name %></h3>
             </div>
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-0 col-lg-0 " align="center">
+                         <figure>
+		                    <%=image_tag @user.image.thumb.url%>
+		                </figure>
                 <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
                   <dl>
                     <dt>DEPARTMENT:</dt>
@@ -40,7 +42,7 @@
                   </dl>
                 </div>-->
                 <div class=" col-md-12 col-lg-12 "> 
-                  <table class="table table-user-information">
+                  <table class="table table-user-information ">
                     <tbody>
                          
                      
@@ -53,10 +55,7 @@
                         <td>sex:</td>
                         <td><%=@user.sex%></td>
                       </tr>
-                     
-                     
-                   
-                    
+                
               
                       <tr>
                         <td>Address</td>
@@ -77,12 +76,7 @@
               
                     </tbody>
                   </table>
-                  <%if current_user%>
-                  <%if current_user.id==@user.id%>
-                  <a href="#" class="btn btn-primary"><%= link_to 'Edit', edit_user_registration_path %></a>
-                  <%end%>
-                  <%end%>
-                  <a href="#" class="btn btn-primary"><%= link_to 'Back', books_path %></a>
+              
                 </div>
               </div>
             </div>
@@ -92,5 +86,47 @@
         </div>
       </div>
     
+    
+    
+    
+    	<div class="row">
+		<div class="col-lg-12 col-md-8 col-sm-9 col-xs-12">
+		   <% @books.each do |book| %>
+		    <article>
+		        <div class="row">
+		         
+		            <div class="col-sm-12 col-md-12">
+		                <span class="label label-default pull-right"><i class="glyphicon glyphicon-comment"></i>50</span>
+		               	<h4><%=book.user.name %></h4>
+		                <h4></h4> <%=book.country%></h4>
+		                <p> <%=book.induction%></p>
+		                <section>
+		                    <i class="glyphicon glyphicon-folder-open"></i><%= link_to 'Show', book %>
+		                    <%if current_user%>
+		                    <%if current_user.id==book.user_id%>
+		                    <i class="glyphicon glyphicon-user"></i>><%= link_to 'Edit', edit_book_path(book) %>
+		                    <i class="glyphicon glyphicon-calendar"></i>><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+		                    <i class="glyphicon glyphicon-eye-open"></i>
+		                    <%end%>
+		                    <%end%>
+		                    <a href="#" class="btn btn-default btn-sm pull-right">More ... </a>
+		                </section>
+		            </div>
+		        </div>
+		    </article>
+		    <%end%>
+		    
+		 
+		    <%if current_user%>
+                  <%if current_user.id==@user.id%>
+                  <a href="#" class="btn btn-primary"><%= link_to 'Edit', edit_user_registration_path %></a>
+                  <%end%>
+           <%end%>    
+                  <a href="#" class="btn btn-primary"><%= link_to 'Back', books_path %></a>
+		   
+		    
+		   
+		</div>
+	</div>
     </div>
     </section>
