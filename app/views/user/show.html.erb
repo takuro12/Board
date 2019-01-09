@@ -80,8 +80,11 @@
               
                     </tbody>
                   </table>
-                  
+                  <%if current_user%>
+                  <%if current_user.id==@book.user_id%>
                   <a href="#" class="btn btn-primary"><%= link_to 'Edit', edit_user_registration_path %></a>
+                  <%end%>
+                  <%end%>
                   <a href="#" class="btn btn-primary"><%= link_to 'Back', book_path %></a>
                 </div>
               </div>
