@@ -4,6 +4,8 @@ class UserController < ApplicationController
 
  
   @user=User.find(params[:id])
+ 
+  @books=Book.where(user_id: @user.id)
   end
   
   def mypage
